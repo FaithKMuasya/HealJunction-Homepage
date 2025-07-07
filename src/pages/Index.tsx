@@ -17,21 +17,26 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Search, MapPin, Star, Globe, Users, Clock, Award } from "lucide-react";
+import { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+
 
 
 
 const Index = () => {
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
+ {/* Header */}
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <div className="text-2xl font-bold text-blue-600">HealJunction</div>
-            </div>
+            {/* Logo */}
+            <div className="text-2xl font-bold text-blue-600">HealJunction</div>
+
+            {/* Desktop Nav */}
             <nav className="hidden md:flex space-x-8">
-              <a href="#" className="text font-normal hover:text-blue-600">Home</a>
+              <a href="#" className="text-gray-700 hover:text-blue-600">Home</a>
               <a href="#" className="text-gray-700 hover:text-blue-600">Find Care</a>
               <a href="#" className="text-gray-700 hover:text-blue-600">Health Network</a>
               <a href="#" className="text-gray-700 hover:text-blue-600">Partnership</a>
@@ -39,17 +44,33 @@ const Index = () => {
               <a href="#" className="text-gray-700 hover:text-blue-600">Contact Us</a>
               <a href="#" className="text-gray-700 hover:text-blue-600">Event</a>
               <a href="#" className="text-gray-700 hover:text-blue-600">About Us</a>
-
-
-
-
             </nav>
-            {/* <div className="flex items-center space-x-4">
-              <Button variant="outline">Sign In</Button>
-              <Button>Get Started</Button>
-            </div> */}
+
+            {/* Mobile Hamburger Button */}
+            <button
+              className="md:hidden text-2xl text-blue-600"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden px-4 pb-4 bg-white border-t">
+            <nav className="flex flex-col space-y-4">
+              <a href="#" className="text-gray-700 hover:text-blue-600">Home</a>
+              <a href="#" className="text-gray-700 hover:text-blue-600">Find Care</a>
+              <a href="#" className="text-gray-700 hover:text-blue-600">Health Network</a>
+              <a href="#" className="text-gray-700 hover:text-blue-600">Partnership</a>
+              <a href="#" className="text-gray-700 hover:text-blue-600">Request a quote</a>
+              <a href="#" className="text-gray-700 hover:text-blue-600">Contact Us</a>
+              <a href="#" className="text-gray-700 hover:text-blue-600">Event</a>
+              <a href="#" className="text-gray-700 hover:text-blue-600">About Us</a>
+            </nav>
+          </div>
+        )}
       </header>
 
       
